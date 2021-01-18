@@ -1,0 +1,79 @@
+.navbar.fixed-top {
+    border-radius: 0 25px 225px 0/25px 0 25px 255px;
+    border-width: 0 0 2px;
+}
+
+.navbar-brand {
+    padding-left: 15px;
+    padding-top: 8px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.container {
+    margin-top : 100px;
+}
+
+.account-page {
+    margin-top : 50px;
+}
+
+p.poor {
+    font-family: "Poor Story";
+    font-size: 16px;
+}
+
+.div1 {
+    float: left;
+    width:50%
+}
+.div2 {
+    float: left
+    width:50%
+}
+
+#login-tab {
+    justify-content: flex-end;
+}
+
+.tab-content {
+    display: block;
+    margin-top : 16px
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a:link {
+    text-decoration: none;
+    text-shadow: 0 0 0px;
+}
+
+#logo {
+    text-shadow: 0 0 30px;
+}
+
+
+
+
+
+#btn1 {
+    margin-left: 5px;
+}
+
+#btn2 {
+    margin-left: 5px;
+}
+
+#hihi {
+    display: none;
+}
+
+div div form .btn-danger {
+
+}

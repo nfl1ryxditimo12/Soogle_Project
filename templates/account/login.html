@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+<div class="row mt-5">
+    <div class="col-12 text-center">
+        <legend>
+            <h1 class="account-page">Login</h1>
+        </legend>
+    </div>
+    <div class="col-12 mt-3 text-right">
+        <span>as <a href="{% url 'account:register' %}">Register</a></span>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        {{ error }}
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12" style="
+        padding-left: 5%;
+        padding-right: 0%;">
+        <form method="POST" action=".">
+            {% csrf_token %}
+            {% include "form_error.html" %}
+
+            <div class="form-group row mt-5">
+                <label for="username" class="col-sm-2 col-form-label" style="width: 20%">ID</label>
+
+                <div style="width: 70%">
+                    <input type="text" class="form-control" name="username" id="username"
+                           value="{{ form.username.value|default_if_none:'' }}">
+                </div>
+            </div>
+
+            <div class="form-group row mt-5">
+                <label for="password" class="col-sm-2 col-form-label" style="width:20%">Password</label>
+
+                <div style="width: 70%">
+                    <input type="password" class="form-control" name="password" id="password"
+                           value="{{ form.password.value|default_if_none:'' }}">
+                </div>
+            </div>
+
+            <div class="mt-5 text-center" style="padding-right:5%">
+                <button type="submit" class="btn btn-primary btn-lg">Go !</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

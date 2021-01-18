@@ -1,0 +1,62 @@
+{% load static %}
+<html lang="ko">
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intitial-scale=1">
+
+    <!--  CSS, JS  -->
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'summernote-lite.css' %}">
+
+
+    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <script src="{% static 'summernote-lite.js' %}"></script>
+    <script src="{% static 'summernote-ko-KR.js' %}"></script>
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+    <title>우덜의 소통공간^^</title>
+
+
+    {% block header %}
+    {% endblock %}
+
+    <style type="text/css">
+    a { text-decoration:none }
+    </style>
+
+</head>
+<body>
+{% include "navbar.html" %}
+
+<div class="container">
+{% block contents %}
+{% endblock %}
+</div>
+
+
+{% block script %}
+{% endblock %}
+
+<script>
+        function dp_menu(){
+            let click = document.getElementById("navbarColor03");
+            if(click.style.display === "block"){
+                click.style.display = "none";
+
+            }else{
+                click.style.display = "block";
+
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>
