@@ -140,4 +140,5 @@ def post_vote(request, post_id):
         messages.error(request, '본인이 작성한 글은 추천할 수 없습니다.')
     else:
         post.voter.add(request.user)
+        messages.success(request, '추천이 완료되었습니다.')
     return redirect('soogle:post_detail', post_id=post.id)
