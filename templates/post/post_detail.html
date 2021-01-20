@@ -89,6 +89,16 @@
 
 	<form action="{% url 'soogle:comment_write' post.id %}" method="post" class="my-3">
         {% csrf_token %}
+		{% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+        {% for field in form %}
+            {% if field.errors %}
+            <strong>{{ field.label }}</strong>
+            {{ field.errors }}
+            {% endif %}
+        {% endfor %}
+        </div>
+        {% endif %}
         <div class="form-group">
             <textarea {% if not user.is_authenticated %}disabled{% endif %}
               name="contents" id="contents" class="form-control" rows="3"></textarea>

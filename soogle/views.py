@@ -30,8 +30,8 @@ def post_write(request):
             return redirect('soogle:post_list')
     else:
         form = PostForm()
-        context = {'form': form}
-        return render(request, 'post/post_write.html', context)
+    context = {'form': form}
+    return render(request, 'post/post_write.html', context)
 
 
 @login_required(login_url = 'account:login')
@@ -81,17 +81,17 @@ def post_list(request):
     if so == 'recommend':
         post_list = Post.objects.annotate(num_voter=Count('voter')).order_by('-num_voter', '-create_date')
     elif so == 'popular':
-        post_list = Post.objects.annotate(num_answer=Count('comment')).order_by('-num_comment', '-create_date')
+        post_list = Post.objects.annotate(num_comment=Count('comment')).order_by('-num_comment', '-create_date')
     else:  # recent
         post_list = Post.objects.order_by('-create_date')
 
     # 조회
     if kw:
         post_list = post_list.filter(
-            Q(subject__icontains=kw) |  # 제목검색
-            Q(content__icontains=kw) |  # 내용검색
+            Q(title__icontains=kw) |  # 제목검색
+            Q(contents__icontains=kw) |  # 내용검색
             Q(author__username__icontains=kw) |  # 질문 글쓴이검색
-            Q(answer__author__username__icontains=kw)  # 답변 글쓴이검색
+            Q(comment__author__username__icontains=kw)  # 답변 글쓴이검색
         ).distinct()
 
     # 페이징처리
@@ -115,11 +115,8 @@ def post_detail(request, post_id):
 
 @login_required(login_url='account:login')
 def comment_write(request, post_id):
-    """
-    답변 등록
-    """
-    post = get_object_or_404(Post, pk=post_id)
 
+    post = get_object_or_404(Post, pk=post_id)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -133,7 +130,7 @@ def comment_write(request, post_id):
     else:
         form = CommentForm()
     context = {'post': post, 'form': form}
-    return render(request, 'soogle/post_detail.html', context)
+    return render(request, 'post/post_detail.html', context)
 
 @login_required(login_url='account:login')
 def post_vote(request, post_id):

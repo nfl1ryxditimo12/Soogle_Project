@@ -2,19 +2,19 @@
 
 {% block contents %}
 
-
 <form method="post">
     {% csrf_token %}
-    {% if form.errors %}
-        <div class="alert alert-danger" role="alert">
-        {% for field in form %}
-        {% if field.errors %}
-             <strong>{{ field.label }}</strong>
-             {{ field.errors }}
+    <!-- 오류표시 Start -->
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                <strong>{{ field.label }}</strong>
+                {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+            </div>
         {% endif %}
-        {% endfor %}
-        </div>
-    {% endif %}
     <div class="jumbotron">
         <h1 class="display-3 text-info">POST</h1>
         <hr class="my-4">

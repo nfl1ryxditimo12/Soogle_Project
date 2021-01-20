@@ -16,50 +16,35 @@
                 <a class="nav-link" data-toggle="tab" href="#profile">Version</a>
             </li>
 
-            {% if user.is_authenticated %}
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Align</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">
-                        <option value="recent" {% if so == 'recent' %}selected{% endif %}>Recent</option>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>Recommend</option>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <option value="popular" {% if so == 'popular' %}selected{% endif %}>Popular</option>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <div class="col-4 input-group">
-                        <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
-                        <button class="btn btn-outline-secondary" type="button" id="btn_search" >Go !</button>
-                    </div>
-                </div>
-            </li>
-            {% endif %}
-
             <li class="nav-item" id="write-tab">
                 <a class="nav-link" href="{% url 'soogle:post_write' %}">Write</a>
             </li>
         </ul>
     </div>
 </div>
-
+<div>
+    <select  class="form-control so" id="post-align">
+        <option value="recent" {% if so == 'recent' %}selected{% endif %}>Recent</option>
+        <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>Recommend</option>
+        <option value="popular" {% if so == 'popular' %}selected{% endif %}>Popular</option>
+    </select>
+</div>
 <div id="myTabContent" class="tab-content mt-3">
-  <div class="tab-pane fade show active" id="home">
-    <p>
-        <small>
-            안녕하세요 soogle 입니다.
-        </small>
-    </p>
-  </div>
-  <div class="tab-pane fade" id="profile">
-    <p>
-        <small>
-            Version : v1.2.3 (Alpha)
-        </small>
-    </p>
-  </div>
+
+    <div class="tab-pane fade show active" id="home">
+        <p>
+            <small>
+                안녕하세요 soogle 입니다.
+            </small>
+        </p>
+    </div>
+    <div class="tab-pane fade" id="profile">
+        <p>
+            <small>
+                Version : v1.3.0 (Alpha)
+            </small>
+        </p>
+    </div>
 </div>
 
 <div class="row mt-5">
@@ -141,6 +126,12 @@
     </ul>
 </div>
 
+<form id="searchForm" method="get" action="{% url 'soogle:post_list' %}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+    <input type="hidden" id="page" name="page" value="{{ page }}">
+    <input type="hidden" id="so" name="so" value="{{ so }}">
+</form>
+
 {% endblock %}
 
 {% block script %}
@@ -165,5 +156,7 @@ $(document).ready(function(){
     });
 });
 </script>
+
+
 
 {% endblock %}

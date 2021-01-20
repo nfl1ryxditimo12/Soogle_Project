@@ -15,5 +15,5 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['contents']
         labels = {
-            'contents': '답변내용',
+            'contents': '댓글',
         }
