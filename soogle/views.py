@@ -113,7 +113,7 @@ def post_detail(request, post_id):
     return render(request, "post/post_detail.html", context)
 
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def comment_write(request, post_id):
     """
     답변 등록
@@ -135,7 +135,7 @@ def comment_write(request, post_id):
     context = {'post': post, 'form': form}
     return render(request, 'soogle/post_detail.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def post_vote(request, post_id):
 
     post = get_object_or_404(Post, pk=post_id)
