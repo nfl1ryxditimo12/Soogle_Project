@@ -41,3 +41,9 @@ img {
 #post-align {
     border-width: 0px 1px 2px 1px;
 }
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
