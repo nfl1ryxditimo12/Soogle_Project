@@ -16,7 +16,7 @@
 <form class="sign-form col-md-12" method="POST" action=".">
     {% csrf_token %}
     {% include "form_error.html" %}
-
+    <input type="hidden" name="next" value="{{ next }}">
     <div class="form-group">
         <input type="text" class="form-control" id="username" name="username"
                value="{{ form.username.value|default_if_none:'' }}" placeholder="I D" onfocus="this.placeholder=''"
