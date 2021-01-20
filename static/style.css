@@ -46,4 +46,5 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    background: url('arrow.png') no-repeat 95% 50%;
 }
