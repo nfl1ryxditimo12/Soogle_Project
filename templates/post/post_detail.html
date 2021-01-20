@@ -16,7 +16,7 @@
 		<div class="mt-4">
 			<h1><strong>{{ post.title }}</strong></h1>
 			<div class="mt-4" id="write-date">
-
+				<small class="text-muted">작성자 - {{ post.author.username }}</small><br>
 				<small class="text-muted">작성 - {{ post.create_date|date:'Y년 m월 d일 H:i' }} {% if post.modify_date %} (수정됨) {% endif %}</small>
 			</div>
 
@@ -52,13 +52,16 @@
 		<hr class="my-4 mt-3">
 		<h6 class="text-info">C o m m e n t</h6>
 
-		<div class="mt-4">
-			{% for comment in post.comment_set.all %}
+		{% for comment in post.comment_set.all %}
+		<div>
+			<span style="white-space: pre-line;">{{ comment.contents }}</span>
 
-				<a name="comment_{{ comment.id }}"></a>
-				<div class="card-text">{{ comment.contents|mark }}</div>
-			{% endfor %}
+	        <!-- 질문 댓글 작성 시간 -->
+	        <span>
+	        - {{ comment.author }} {% if comment.modify_date %} (수정됨) {% endif %}
+	        </span>
 		</div>
+		{% endfor %}
 	</div>
 
 	<form action="{% url 'soogle:comment_write' post.id %}" method="post" class="my-3">
