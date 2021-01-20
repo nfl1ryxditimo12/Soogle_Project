@@ -19,3 +19,8 @@
 #write-tab {
     margin-left: auto;
 }
+
+.img {
+    max-width: 100%;
+    height: auto;
+}
