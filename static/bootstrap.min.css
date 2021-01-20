@@ -11,7 +11,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 @import url(https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Poor+Story&display=swap);
+:root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -3360,7 +3360,6 @@ input[type="submit"].btn-block {
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  float: right;
 }
 .input-group > .custom-file,
 .input-group > .custom-select,
@@ -4118,8 +4117,6 @@ input[type="submit"].btn-block {
 .navbar-toggler:focus,
 .navbar-toggler:hover {
   text-decoration: none;
-  outline: none;
-  border: none;
 }
 .navbar-toggler-icon {
   display: inline-block;
@@ -4390,9 +4387,10 @@ input[type="submit"].btn-block {
   color: #333;
 }
 .navbar-light .navbar-toggler {
-    color: #333;
-    border: #fff;
-  }
+  color: #333;
+  border: 0;
+  outline: 0;
+}
 .navbar-light .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='%23333' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }

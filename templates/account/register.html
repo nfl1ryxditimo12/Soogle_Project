@@ -1,86 +1,52 @@
 {% extends "base.html" %}
 
 {% block contents %}
-<div class="row mt-5">
+
+<div class="row">
+
     <div class="col-12 text-center">
-        <legend>
-            <h1 class="account-page">Register</h1>
-        </legend>
+        <h1>R e g i s t e r</h1>
     </div>
-    <div class="col-12 mt-3 text-right">
-        <span>as <a href="{% url 'account:login' %}">Login</a></span>
-    </div>
-</div>
-<div class="row mt-3">
-    <div class="col-12">
-        {{ error }}
+
+    <div class="col-12 text-right">
+        <span>As <a href="{% url 'account:login' %}">Login</a></span>
     </div>
 </div>
-<div class="row mt-3">
-    <div class="col-12" style="
-        padding-left: 5%;
-        padding-right: 0%;">
-        <form method="post" action=".">
-            {% csrf_token %}
-            {% include "form_error.html" %}
 
-            <div class="form-group row mt-3">
-                <label for="username" class="col-sm-2 col-form-label" style="width:20%;">ID</label>
+<form method="post" class="sign-form col-md-12" action=".">
+    {% csrf_token %}
+    {% include "form_error.html" %}
 
-                <div style="width:70%;">
-                    <input type="text" class="form-control" name="username" id="username"
-                           value="{{ form.username.value|default_if_none:'' }}">
-                </div>
-            </div>
-
-            <div class="form-group row mt-3">
-                <label for="nickname" class="col-sm-2 col-form-label" style="width:20%;">Name</label>
-
-                <div style="width:70%;">
-                    <input type="text" class="form-control" name="name" id="name"
-                           value="{{ form.nickname.value|default_if_none:'' }}">
-                </div>
-            </div>
-
-            <div class="form-group row mt-3">
-                <label for="password1" class="col-sm-2 col-form-label" style="width:20%;">Password</label>
-
-                <div style="width:70%;">
-                    <input type="password" class="form-control" name="password1" id="pwd1" placeholder="비밀번호는 8자리 이상 입력해 주세요 ." onfocus="this.placeholder=''"
-                            onblur="this.placeholder='비밀번호는 8자리 이상 입력해 주세요 .'"
-                           value="{{ form.password1.value|default_if_none:'' }}">
-                </div>
-            </div>
-
-            <div class="form-group row mt-3">
-                <label for="password2" class="col-sm-2 col-form-label" style="width:20%;">Re-Password</label>
-
-                <div style="width:70%;">
-                    <input type="password" class="form-control" name="password2" id="pwd2" placeholder="비밀번호는 8자리 이상 입력해 주세요 ." onfocus="this.placeholder=''"
-                            onblur="this.placeholder='비밀번호는 8자리 이상 입력해 주세요 .'"
-                           value="{{ form.password2.value|default_if_none:'' }}">
-                </div>
-            </div>
-
-            <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
-            <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
-
-            <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label" style="width:20%;">Email</label>
-
-                <div style="width:70%;">
-                    <input type="text" class="form-control" name="email" id="email"
-                       value="{{ form.email.value|default_if_none:'' }}">
-                </div>
-            </div>
-
-
-            <div class="mt-5 text-center" style="padding-right:5%;">
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-            </div>
-        </form>
+    <div class="form-group">
+        <input type="text" class="form-control" name="username" id="username"
+               value="{{ form.username.value|default_if_none:'' }}" placeholder="I D" onfocus="this.placeholder=''"
+                            onblur="this.placeholder='I D'">
     </div>
-</div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="nickname" id="nickname"
+               value="{{ form.nickname.value|default_if_none:'' }}" placeholder="N a m e" onfocus="this.placeholder=''"
+                            onblur="this.placeholder='N a m e'">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" name="password1" id="password1"
+               value="{{ form.password1.value|default_if_none:'' }}" placeholder="P a s s w o r d" onfocus="this.placeholder=''"
+                            onblur="this.placeholder='P a s s w o r d'">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" name="password2" id="password2"
+               value="{{ form.password2.value|default_if_none:'' }}" placeholder="R e - P a s s w o r d" onfocus="this.placeholder=''"
+                            onblur="this.placeholder='R e - P a s s w o r d'">
+    </div>
+    <div class="alert alert-dismissible alert-success col-md-6" id="alert-success">비밀번호가 일치합니다.</div>
+    <div class="alert alert-dismissible alert-danger col-md-6" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="email" id="email"
+               value="{{ form.email.value|default_if_none:'' }}" placeholder="E m a i l" onfocus="this.placeholder=''"
+                            onblur="this.placeholder='E m a i l'">
+    </div>
+    <button type="submit" class="btn btn-danger sign-button">Sign Up</button>
+</form>
+
 {% endblock %}
 
 {% block script %}
@@ -89,8 +55,8 @@ $(function(){
     $("#alert-success").hide();
     $("#alert-danger").hide();
     $("input").keyup(function(){
-        var pwd1=$("#pwd1").val();
-        var pwd2=$("#pwd2").val();
+        var pwd1=$("#password1").val();
+        var pwd2=$("#password2").val();
         if(pwd1 != "" || pwd2 != ""){
             if(pwd1 == pwd2){
                 $("#alert-success").show();

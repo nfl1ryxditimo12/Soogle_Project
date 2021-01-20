@@ -6,7 +6,9 @@
 
 <div class="jumbotron">
 	<!-- Title 영역 -->
-	<div class="ml-2">
+
+
+	<div class="col-12">
 		<div>
 			<h6 class="text-info">T i t l e</h6>
 
@@ -29,11 +31,12 @@
 		</div>
 	</div>
 
+
 	<!-- Contents 영역 -->
-	<div class="ml-2">
+	<div class="col-12">
 		<hr class="my-4">
 		<h6 class="text-info">C o n t e n t s</h6>
-		<div class="mt-5">
+		<div class="mt-4">
 			<div>
 				<div>
 					<div class="card-text">{{ post.contents|mark }}</div>
@@ -41,20 +44,23 @@
 			</div>
 		</div>
 	</div>
-	<div class="">
-	<hr class="my-4 mt-3">
-	<p class="text-info">C o m m e n t</p>
-	</div>
 
 
 	<!-- Comment 영역 -->
 
-	{% for comment in post.comment_set.all %}
-	<div class="ml-2">
-		<a name="comment_{{ comment.id }}"></a>
-		<div class="card-text">{{ comment.contents|mark }}</div>
+	<div class="col-12">
+		<hr class="my-4 mt-3">
+		<h6 class="text-info">C o m m e n t</h6>
+
+		<div class="mt-4">
+			{% for comment in post.comment_set.all %}
+
+				<a name="comment_{{ comment.id }}"></a>
+				<div class="card-text">{{ comment.contents|mark }}</div>
+			{% endfor %}
+		</div>
 	</div>
-	{% endfor %}
+
 	<form action="{% url 'soogle:comment_write' post.id %}" method="post" class="my-3">
         {% csrf_token %}
         <div class="form-group">

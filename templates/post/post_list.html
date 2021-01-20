@@ -3,52 +3,49 @@
 {% load humanize %}
 {% block contents %}
 
-<div class="div1">
-    <ul class="nav nav-tabs" id="post-tab">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
-        </li>
-    </ul>
 
-</div>
+<div class="row">
+    <div class="col-12">
+        <ul class="nav nav-tabs">
 
-<div class="div2">
-    <ul class="nav nav-tabs" id="login-tab">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+            </li>
 
-        {% if user.is_authenticated %}
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Align</a>
-            <div class="dropdown-menu inline-div">
-              <a class="dropdown-item" href="#">
-                <option value="recent" {% if so == 'recent' %}selected{% endif %}>Recent</option>
-              </a>
-              <a class="dropdown-item" href="#">
-                <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>Recommend</option>
-              </a>
-              <a class="dropdown-item" href="#">
-                <option value="popular" {% if so == 'popular' %}selected{% endif %}>Popular</option>
-              </a>
-              <div class="dropdown-divider"></div>
-              <div class="col-4 input-group">
-                  <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
-                      <div class="input-group-append">
-                          <button class="btn btn-outline-secondary" type="button" id="btn_search" >Go !</button>
-                      </div>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Align</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">
+                        <option value="recent" {% if so == 'recent' %}selected{% endif %}>Recent</option>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>Recommend</option>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <option value="popular" {% if so == 'popular' %}selected{% endif %}>Popular</option>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <div class="col-4 input-group">
+                        <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+                        <button class="btn btn-outline-secondary" type="button" id="btn_search" >Go !</button>
+                    </div>
                 </div>
-            </div>
-        </li>
-        {% endif %}
+            </li>
+            {% endif %}
 
-        <li class="nav-item" id="write-box">
-            <a class="nav-link" href="{% url 'soogle:post_write' %}">Write</a>
-        </li>
-    </ul>
+            <li class="nav-item" id="write-tab">
+                <a class="nav-link" href="{% url 'soogle:post_write' %}">Write</a>
+            </li>
+        </ul>
+    </div>
 </div>
 
-<div id="myTabContent" class="tab-content">
+<div id="myTabContent" class="tab-content mt-3">
   <div class="tab-pane fade show active" id="home">
     <p>
         <small>
@@ -65,38 +62,33 @@
   </div>
 </div>
 
+<div class="row mt-5">
+    <div class="col-12">
+	<table class="table table-hover">
+        <thead>
+        <tr class="text-center">
+            <th scope="col" style="width:10%"><em>Vote</em></th>
+            <th scope="col" style="width:40%"><em>Title</em></th>
+            <th scope="col" style="width:10%"><em>Author</em></th>
+        </tr>
+        </thead>
 
-
-  <table class="table table-hover mt-5">
-  <thead>
-    <tr class="text-center">
-<!--      <th scope="col" style="width:13%"><em>No .</em></th>-->
-<!--      <th scope="col" style="width:5%"><em>#</em></th>-->
-      <th scope="col" style="width:10%"><em>Vote</em></th>
-      <th scope="col" style="width:40%"><em>Title</em></th>
-      <th scope="col" style="width:10%"><em>Author</em></th>
-
-    </tr>
-  </thead>
-  <tbody>
-    {% if post_list %}
+		<tbody>
+        {% if post_list %}
         {% for post in post_list %}
-        <tr class="text-active">
-            <td class="text-center">
-<!--                {{ post_list.paginator.count|sub:post_list.start_index|sub:forloop.counter0|add:1 }}-->
+        <tr class="text-active text-center">
+            <td>
                 {% if post.voter.all.count > 0 %}
-                   <span class="badge badge-pill badge-warning px-2 py-1">{{ post.voter.all.count }}</span>
+	            <span class="badge badge-pill badge-warning px-2 py-1">{{ post.voter.all.count }}</span>
                 {% endif %}
             </td>
-            <td class="text-center">
+            <td>
                 <a href="{% url 'soogle:post_detail' post.id %}">{{ post.title }}</a>
                 {% if post.comment_set.count > 0 %}
                 <span class="text-danger small ml-2">{{ post.comment_set.count }}</span>
                 {% endif %}
-
-
             </td>
-            <td class="text-center" style="padding-left: 0px;padding-right:0px;">{{ post.author.username }}</td>
+            <td style="padding-left:0; padding-right:0;">{{ post.author.username }}</td>
         </tr>
         {% endfor %}
         {% else %}
@@ -104,11 +96,14 @@
             <td colspan="3">게시글을 작성해주세요.</td>
         </tr>
         {% endif %}
-  </tbody>
-</table>
+        </tbody>
+	</table>
+    </div>
+</div>
 
-<!-- 페이징처리 시작 -->
-<ul class="pagination justify-content-center">
+<div class="mt-4">
+	<!-- 페이징처리 시작 -->
+	<ul class="pagination" style="justify-content: center;">
         <!-- 이전페이지 -->
         {% if post_list.has_previous %}
         <li class="page-item">
@@ -144,7 +139,7 @@
         </li>
         {% endif %}
     </ul>
-
+</div>
 
 {% endblock %}
 
