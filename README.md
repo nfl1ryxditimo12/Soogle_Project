@@ -1,6 +1,10 @@
 Soogle 버전관리
 =
 ---
+###v 1.3.2 (Alpha)
+
+- css/js 폴더 이동
+---
 ###v 1.3.1 (Alpha)
 
 - 아이폰 select box 대응
