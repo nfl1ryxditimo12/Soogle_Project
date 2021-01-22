@@ -22,9 +22,15 @@
 					    <div style="display: flex">
 						    <div style="width:20%">
 							    <div>
+								    {% if question.author.username == "admin" %}
+								    <small class="text-danger">
+									    {{ question.author.username }}
+								    </small>
+								    {% else %}
 								    <small class="text-muted">
 									    {{ question.author.username }}
 								    </small>
+								    {% endif %}
 							    </div>
 							    <div>
 								    <small class="text-muted">

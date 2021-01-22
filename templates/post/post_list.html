@@ -73,7 +73,11 @@
                 <span class="text-danger small ml-2">{{ post.comment_set.count }}</span>
                 {% endif %}
             </td>
+            {% if post.author.username == "admin" %}
+            <td class="text-danger" style="padding-left:0; padding-right:0;">{{ post.author.username }}</td>
+            {% else %}
             <td style="padding-left:0; padding-right:0;">{{ post.author.username }}</td>
+            {% endif %}
         </tr>
         {% endfor %}
         {% else %}
