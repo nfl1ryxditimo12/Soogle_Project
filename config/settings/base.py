@@ -46,6 +46,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'question',
     'soogle',
     'account',
     'django.contrib.admin',

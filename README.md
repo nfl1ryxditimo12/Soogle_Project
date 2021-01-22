@@ -1,6 +1,11 @@
 Soogle 버전관리
 =
 ---
+###v 1.4.0 (Alpha)
+
+- About 페이지 추가
+- Blog 링크 추가
+---
 ###v 1.3.2 (Alpha)
 
 - css/js 폴더 이동

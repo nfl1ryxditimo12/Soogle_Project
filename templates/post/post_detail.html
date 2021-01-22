@@ -25,8 +25,8 @@
 		<div class="mt-4">
 			<h1><strong>{{ post.title }}</strong></h1>
 			<div class="mt-4" id="write-date">
-				<small class="text-muted">작성자 - {{ post.author.username }}</small><br>
-				<small class="text-muted">작성 - {{ post.create_date|date:'Y년 m월 d일 H:i' }} {% if post.modify_date %} (수정됨) {% endif %}</small>
+
+				<small class="text-muted">{{ post.author.username }} - {{ post.create_date|date:'Y년 m월 d일 H:i' }} {% if post.modify_date %} (수정됨) {% endif %}</small>
 			</div>
 
 			<div class="mt-3">

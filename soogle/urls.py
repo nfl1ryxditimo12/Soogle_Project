@@ -11,4 +11,6 @@ urlpatterns = [
     path('delete/<int:post_id>/', views.post_delete, name='post_delete'),
     path('comment/write/<int:post_id>/', views.comment_write, name='comment_write'),
     path('vote/<int:post_id>/', views.post_vote, name='post_vote'),
+    path('membership/', views.soogle_membership, name='soogle_membership'),
+
 ]

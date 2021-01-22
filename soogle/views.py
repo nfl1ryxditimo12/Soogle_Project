@@ -142,3 +142,7 @@ def post_vote(request, post_id):
         post.voter.add(request.user)
         messages.success(request, '추천이 완료되었습니다.')
     return redirect('soogle:post_detail', post_id=post.id)
+
+def soogle_membership(request):
+    return render(request, 'post/soogle_membership.html')
+

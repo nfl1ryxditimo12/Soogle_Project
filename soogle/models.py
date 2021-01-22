@@ -37,3 +37,4 @@ class Comment(models.Model):
         db_table = '댓글'
         verbose_name = '댓글'
         verbose_name_plural = '댓글'
+

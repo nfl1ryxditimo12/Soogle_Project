@@ -23,4 +23,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('post/', include('soogle.urls')),
     path('account/', include('account.urls')),
+    path('about/', include('question.urls')),
 ]
