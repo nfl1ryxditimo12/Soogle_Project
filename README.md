@@ -1,6 +1,10 @@
 Soogle 버전관리
 =
 ---
+###v 1.4.1 (Alpha)
+
+- admin 강조
+---
 ###v 1.4.0 (Alpha)
 
 - About 페이지 추가
