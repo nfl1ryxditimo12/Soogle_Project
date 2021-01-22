@@ -276,5 +276,6 @@ dmypy.json
 
 # secret
 secrets.json
+ngrok
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,pycharm,python
