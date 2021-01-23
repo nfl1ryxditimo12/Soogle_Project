@@ -6,9 +6,7 @@ from .forms import RegisterForm
 
 
 def register(request):
-    """
-    계정생성
-    """
+
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -29,3 +27,7 @@ def register(request):
 def profile(request):
 
     return render(request, 'account/profile.html')
+
+def page_not_found(request, exception):
+
+    return render(request, 'account/404.html', {})

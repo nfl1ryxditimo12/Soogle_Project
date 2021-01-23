@@ -26,3 +26,5 @@ urlpatterns = [
     path('about/', include('question.urls')),
     path('notice/', include('notice.urls')),
 ]
+
+handler404 = 'account.views.page_not_found'

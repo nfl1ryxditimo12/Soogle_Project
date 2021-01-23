@@ -147,4 +147,3 @@ def post_vote(request, post_id):
 
 def soogle_membership(request):
     return render(request, 'post/soogle_membership.html')
-
