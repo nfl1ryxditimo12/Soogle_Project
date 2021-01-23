@@ -1,6 +1,11 @@
 # Soogle 버전관리
 
 ---
+### v 1.5.0 (Alpha)
+
+- Notice 페이지 추가
+- community 제목 추가
+---
 ### v 1.4.1 (Alpha)
 
 - admin 강조
