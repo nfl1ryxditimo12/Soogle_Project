@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load filter %}
+{% load humanize %}
 
 
 {% block contents %}
@@ -13,7 +15,7 @@
 				<div class="card-body">
 					{% for notice in notice_index %}
 					<h4 class="card-title">{{ notice.title }}</h4>
-					<p class="card-text">{{ notice.contents }}</p>
+					<p class="card-text">{{ notice.contents|mark }}</p>
 					{% endfor %}
 			    </div>
 			</div>
