@@ -1,6 +1,10 @@
 # Soogle 버전관리
 
 ---
+### v 1.5.1 (Alpha)
+
+- Index 공지사항 추가
+---
 ### v 1.5.0 (Alpha)
 
 - Notice 페이지 추가
