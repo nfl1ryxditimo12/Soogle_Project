@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from .forms import RegisterForm
@@ -24,3 +25,7 @@ def register(request):
     return render(request, 'account/register.html', {'form': form})
 
 
+@login_required(login_url='account:login')
+def profile(request):
+
+    return render(request, 'account/profile.html')
