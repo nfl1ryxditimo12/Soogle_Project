@@ -2,11 +2,26 @@
 
 
 {% block contents %}
-<div class="text-danger text-center">
-	<h5>현재 데이터 초기화로 인해</h5>
-	<h5>모든 정보가 삭제되었으니</h5>
-	<h5>다시 가입해주시길 바랍니다.</h5>
+<div class="row">
+	<div class="col-12">
+
+		<div class="mt-5">
+			<div class="card text-primary mb-3">
+			    <div class="card-header">
+				    <a href="{% url 'notice:notice_list' %}" class="text-danger"><h2>Notice</h2></a>
+			    </div>
+				<div class="card-body">
+					{% for notice in notice_index %}
+					<h4 class="card-title">{{ notice.title }}</h4>
+					<p class="card-text">{{ notice.contents }}</p>
+					{% endfor %}
+			    </div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
 
 {% endblock %}
 

@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
 from django.contrib import messages
+from notice.models import Notice
 
 import logging
 # Create your views here.
@@ -13,7 +14,8 @@ import logging
 logger = logging.getLogger('soogle')
 
 def index(request):
-    return render(request, 'index.html')
+    notice_index = Notice.objects.order_by('-create_date')
+    return render(request, 'index.html', {'notice_index': notice_index})
 
 def profile(request):
     pass
