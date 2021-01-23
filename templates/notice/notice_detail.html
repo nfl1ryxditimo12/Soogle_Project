@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load filter %}
+{% load humanize %}
+
+{% block contents %}
+
+<!-- 사용자오류 표시 -->
+{% if messages %}
+<div class="alert alert-warning my-3" role="alert">
+    {% for message in messages %}
+	<strong>{{ message.tags }}</strong>
+	<ul><li>{{ message.message }}</li></ul>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="jumbotron">
+
+	<!-- Title 영역 -->
+	<div class="col-12">
+		<div>
+			<h6 class="text-info">T i t l e</h6>
+
+		</div>
+		<div class="mt-4">
+			<h1><strong>{{ notice.title }}</strong></h1>
+			<div class="mt-4" id="write-date">
+				{% if notice.author.username == "admin" %}
+				<span>
+					<small class="text-danger">{{ notice.author.username }} </small>
+				</span>
+				<span>
+				    <small class="text-muted"> - {{ notice.create_date|date:'Y년 m월 d일 H:i' }} {% if notice.modify_date %} (수정됨) {% endif %}</small>
+				</span>
+				{% else %}
+				<span>
+					<small class="text-muted">{{ notice.author.username }} </small>
+				</span>
+				<span>
+				    <small class="text-muted"> - {{ notice.create_date|date:'Y년 m월 d일 H:i' }} {% if notice.modify_date %} (수정됨) {% endif %}</small>
+				</span>
+				{% endif %}
+			</div>
+
+			<div class="mt-3">
+				<ul class="nav">
+					<li class="nav-item post-recommend">
+						<a href="#" class="recommend btn btn-sm btn-outline-secondary" data-uri="{% url 'notice:notice_vote' notice.id  %}">추천</a>
+					</li>
+					
+					<li class="nav-item post-list">
+						<a href="{% url 'notice:notice_list' %}" class="btn btn-sm btn-outline-secondary">목록</a>
+					</li>
+
+					{% if request.user == notice.author %}
+					<li class="nav-item post-modify">
+						<a href="{% url 'notice:notice_modify' notice.id %}" class="btn btn-sm btn-outline-secondary">수정</a>
+					</li>
+
+					<li class="nav-item post-delete">
+						<a href="#" class="delete btn btn-sm btn-outline-secondary" data-uri="{% url 'notice:notice_delete' notice.id  %}">삭제</a>
+					</li>
+					{% endif %}
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Contents 영역 -->
+	<div class="col-12">
+		<hr class="my-4">
+		<h6 class="text-info">C o n t e n t s</h6>
+		<div class="mt-4">
+			<div>
+				<div>
+					<div class="card-text">{{ notice.contents|mark }}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	{% endblock %}
+
+	{% block script %}
+
+<script>
+    $(document).ready(function() {
+     $('#summernote').summernote({
+             height: 300,                 // set editor height
+             minHeight: null,             // set minimum height of editor
+             maxHeight: null,             // set maximum height of editor
+             focus: true                  // set focus to editable area after initializing summernote
+     });
+});
+
+	$(document).ready(function() {
+	  $('#summernote').summernote();
+	});
+</script>
+
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".delete").on('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+    $(".recommend").on('click', function() {
+        if(confirm("정말로 추천하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+});
+</script>
+
+
+{% endblock %}
