@@ -34,9 +34,7 @@
 
                         {% if user.is_authenticated %}
 
-                        <a class="dropdown-item disabled" href="#">My information</a>
-                        <a class="dropdown-item" href="#">Membership</a>
-                        <a class="dropdown-item disabled" href="#">Scret Diary</a>
+                        <a class="dropdown-item" href="{% url 'account:profile' %}">My information</a>
 
                         <div class="dropdown-divider"></div>
 
