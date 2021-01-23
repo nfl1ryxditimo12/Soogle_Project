@@ -6,19 +6,16 @@
 {% block contents %}
 <div class="row">
 	<div class="col-12">
-
-		<div class="mt-5">
-			<div class="card text-primary mb-3">
-			    <div class="card-header">
-				    <a href="{% url 'notice:notice_list' %}" class="text-danger"><h2>Notice</h2></a>
-			    </div>
-				<div class="card-body">
-					{% for notice in notice_index %}
-					<h4 class="card-title">{{ notice.title }}</h4>
-					<p class="card-text">{{ notice.contents|mark }}</p>
-					{% endfor %}
-			    </div>
-			</div>
+		<div class="card text-primary mb-3">
+		    <div class="card-header">
+			    <a href="{% url 'notice:notice_list' %}" class="text-danger"><h2>Notice</h2></a>
+		    </div>
+			<div class="card-body">
+				{% for notice in notice_index %}
+				<h4 class="card-title">{{ notice.title }}</h4>
+				<p class="card-text">{{ notice.contents|mark }}</p>
+				{% endfor %}
+		    </div>
 		</div>
 	</div>
 </div>
