@@ -27,4 +27,6 @@ urlpatterns = [
     path('notice/', include('notice.urls')),
 ]
 
+handler400 = 'account.views.bad_request'
 handler404 = 'account.views.page_not_found'
+handler500 = 'account.views.server_error'
