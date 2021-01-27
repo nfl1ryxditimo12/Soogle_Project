@@ -28,6 +28,14 @@ def profile(request):
 
     return render(request, 'account/profile.html')
 
+def bad_request(request, exception):
+
+    return render(request, 'account/400.html', {})
+
 def page_not_found(request, exception):
 
     return render(request, 'account/404.html', {})
+
+def server_error(request):
+
+    return render(request, 'account/500.html', {})

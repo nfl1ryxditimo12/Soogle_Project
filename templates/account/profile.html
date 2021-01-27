@@ -2,6 +2,10 @@
 
 {% block contents %}
 
+{% if request.user %}
+
 {{ user }}
+
+{% endif %}
 
 {% endblock %}
