@@ -20,6 +20,16 @@
     margin-left: auto;
 }
 
+.select-tab {
+    float:left;
+    padding: 0;
+}
+
+.search-tab {
+    float: right;
+    padding: 0;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -38,8 +48,8 @@ img {
     margin-right: 5px;
 }
 
-#post-align {
-    border-width: 0px 1px 2px 1px;
+.post-align {
+    border-width: 0px 2px 2px 2px;
 }
 
 select {
@@ -47,4 +57,5 @@ select {
     -moz-appearance: none;
     appearance: none;
     background: url('/static/img/arrow.png') no-repeat 95% 50%;
+
 }

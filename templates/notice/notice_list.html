@@ -5,7 +5,11 @@
 <div class="row text-center">
 	<div class="col-12">
 		<h1>N o t i c e</h1>
-
+		{% if request.user.username == 'admin' %}
+		<div class="text-right">
+			<a class="btn btn-primary" href="{% url 'notice:notice_write' %}">글쓰기</a>
+		</div>
+		{% endif %}
 
 		<div class="mt-5">
 			<table class="table table-hover">

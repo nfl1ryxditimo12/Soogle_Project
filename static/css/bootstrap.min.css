@@ -9590,8 +9590,7 @@ table th {
 input {
   border-radius: 255px 25px 225px 25px/25px 225px 25px 255px;
 }
-select,
-select.form-control,
+
 textarea,
 textarea.form-control {
   border-radius: 555px 25px 15px 25px/25px 5px 35px 555px !important;

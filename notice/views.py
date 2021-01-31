@@ -7,6 +7,8 @@ from .models import Notice
 from django.db.models import Q, Count
 from django.contrib import messages
 
+from account.models import User
+
 
 # Create your views here.
 
@@ -22,11 +24,11 @@ def notice_list(request):
     paginator = Paginator(notice_list, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
 
+
     context = {'notice_list': page_obj, 'page': page}
 
     return render(request, "notice/notice_list.html", context)
 
-@login_required(login_url = 'account:login')
 def notice_write(request):
 
     if request.method == "POST":

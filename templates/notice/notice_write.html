@@ -2,7 +2,7 @@
 
 {% block contents %}
 
-{% if request.user %}
+{% if request.user.username == 'admin' %}
 <form method="post">
     {% csrf_token %}
     <!-- 오류표시 Start -->
@@ -34,15 +34,13 @@
     </div>
 </form>
 {% else %}
-<div class="row">
-	<div class="col-12 text-center">
-		<div>
-			<h1>관리자만 접근 가능한 페이지 입니다.</h1>
-		</div>
-		<div class="mt-5">
-			<a href="{% url 'notice:notice_list' %}" class="btn btn-primary">목록</a>
-		</div>
-	</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 text-center">
+        <span class="display-1 d-block">404</span>
+        <div class="mb-4 lead">페이지를 찾을 수 없습니다.</div>
+        <a href="/" class="btn btn-link">홈으로 돌아가기</a>
+    </div>
 </div>
 
 {% endif %}

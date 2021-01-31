@@ -2,10 +2,12 @@
 
 {% block contents %}
 
-{% if request.user %}
-
-{{ user }}
-
-{% endif %}
+<div class="card mb-3">
+	<h3 class="card-header">My information</h3>
+    <div class="card-body mt-3">
+	    <h3 class="card-title text-info" style="display:inline;">{{ request.user.username }} </h3><span class="text-muted">님 환영합니다.</span>
+        <h5 class="mt-3"> Email : {{ request.user.email }}</h5>
+    </div>
+</div>
 
 {% endblock %}

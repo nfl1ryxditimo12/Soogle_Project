@@ -26,6 +26,8 @@ def register(request):
 @login_required(login_url='account:login')
 def profile(request):
 
+
+
     return render(request, 'account/profile.html')
 
 def bad_request(request, exception):

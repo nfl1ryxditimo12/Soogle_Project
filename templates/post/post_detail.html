@@ -132,18 +132,45 @@
 	{% block script %}
 
 <script>
-    $(document).ready(function() {
-     $('#summernote').summernote({
-             height: 300,                 // set editor height
-             minHeight: null,             // set minimum height of editor
-             maxHeight: null,             // set maximum height of editor
-             focus: true                  // set focus to editable area after initializing summernote
-     });
-});
+$(document).ready(function() {
+  $('#summernote').summernote({
+    toolbar: [
+      ['style', ['style']],
+      ['font', ['bold', 'italic', 'underline', 'clear']],
+      ['fontname', ['fontname']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['height', ['height']],
+      ['table', ['table']],
+      ['insert', ['link', 'picture', 'hr']],
+      ['view', ['fullscreen', 'codeview']],
+      ['mybutton', ['myVideo']] // custom button
+    ],
 
-	$(document).ready(function() {
-	  $('#summernote').summernote();
-	});
+    buttons: {
+      myVideo: function(context) {
+        var ui = $.summernote.ui;
+        var button = ui.button({
+          contents: '<i class="fa fa-video-camera"/>',
+          tooltip: 'video',
+          click: function() {
+            var div = document.createElement('div');
+            div.classList.add('embed-container');
+            var iframe = document.createElement('iframe');
+            iframe.src = prompt('Enter video url:');
+            iframe.setAttribute('frameborder', 0);
+            iframe.setAttribute('width', '100%');
+            iframe.setAttribute('allowfullscreen', true);
+            div.appendChild(iframe);
+            context.invoke('editor.insertNode', div);
+          }
+        });
+
+        return button.render();
+      }
+    }
+  });
+});
 </script>
 
 <script type='text/javascript'>
